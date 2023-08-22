@@ -28,7 +28,7 @@ export const postData = async (data: string[]) => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(data)  // Convert the array to a JSON string
+            body: JSON.stringify(data)
         });
 
         if (!response.ok) {

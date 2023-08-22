@@ -8,13 +8,19 @@ import { fetchData } from './api/fetchData';
 
 export const App = () => {
 
-  const store = useStore($carDamage)
-  const isLoading = useStore($isLoading)
+  // Config Variables
+  const showId = true;
+  const buttonConfig = [
+    { idPrefix: 'A', left: 80, positions: [5, 30, 50, 80] },
+    { idPrefix: 'B', left: 45, positions: [0, 13, 45, 75, 90] },
+    { idPrefix: 'C', left: 5, positions: [5, 30, 50, 80] },
+  ];
 
-  const handleClick = (row: {idPrefix: string, left: number, positions: number[]}, index: number) => {
-    addCarDamage(`${row.idPrefix}${index + 1}`)
-  }
+  // Store Variables
+  const store = useStore($carDamage)      // List of damaged parts
+  const isLoading = useStore($isLoading)  // Loading state
 
+  // API Call on App Load
   useEffect(() => {
     const result = fetchData()
     result
@@ -25,13 +31,9 @@ export const App = () => {
       .catch((error) => {console.log(error)})
   }, [])
 
-  const showId = true;
-  const buttonConfig = [
-    { idPrefix: 'A', left: 80, positions: [5, 30, 50, 80] },
-    { idPrefix: 'B', left: 45, positions: [0, 13, 45, 75, 90] },
-    { idPrefix: 'C', left: 5, positions: [5, 30, 50, 80] },
-  ];
-  
+  const handleClick = (row: {idPrefix: string, left: number, positions: number[]}, index: number) => {
+    addCarDamage(`${row.idPrefix}${index + 1}`)
+  }
 
   return (
     isLoading ? <div className='loader'></div> :
