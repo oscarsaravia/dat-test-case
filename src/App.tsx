@@ -1,20 +1,20 @@
-import { useStore } from 'effector-react';
-import { useEffect } from 'react';
+import { useStore } from 'effector-react'
+import { useEffect } from 'react'
 
 import './App.css'
-import { $carDamage, addCarDamage, initDamageList, $isLoading, setIsLoading } from './store';
+import { $carDamage, addCarDamage, initDamageList, $isLoading, setIsLoading } from './store'
 import { CircleButton } from './components/CircleButton/CircleButton'
-import { fetchData } from './api/fetchData';
+import { fetchData } from './api/fetchData'
 
 export const App = () => {
 
   // Config Variables
-  const showId = true;
-  const buttonConfig = [
+  const showId = true
+  const buttonDisplayConfig = [
     { idPrefix: 'A', left: 80, positions: [5, 30, 50, 80] },
     { idPrefix: 'B', left: 45, positions: [0, 13, 45, 75, 90] },
     { idPrefix: 'C', left: 5, positions: [5, 30, 50, 80] },
-  ];
+  ]
 
   // Store Variables
   const store = useStore($carDamage)      // List of damaged parts
@@ -40,7 +40,7 @@ export const App = () => {
     <div className='container'>
       <div className="image-container">
         <img className='car' src="src/assets/car.svg" alt="Car Top View" />
-        {buttonConfig.map(row => 
+        {buttonDisplayConfig.map(row => 
         row.positions.map((top, index) => (
           <CircleButton 
             key={`${row.idPrefix}${index + 1}`}

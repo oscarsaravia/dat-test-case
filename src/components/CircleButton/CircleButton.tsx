@@ -15,7 +15,7 @@ export const CircleButton = ({id, background, size, top, left, showId, isActive=
     const circleButtonStyle: CSSProperties = {
         width: `${size}vw`,
         height: `${size}vw`,
-        backgroundColor: isActive ? 'green' : background,
+        backgroundColor: isActive ? 'orange' : background,
         borderRadius: '50%',
         top: `${top}%`,
         left: `${left}%`,
@@ -39,14 +39,14 @@ export const CircleButton = ({id, background, size, top, left, showId, isActive=
         if (customClick) customClick(id)
     }
 
-  return (
-    <div
-        id={ id }
-        style={ circleButtonStyle }
-        className="circle"
-        onClick={ hancleClick }
-    >
-        { showId && <span style={ showIdStyle }>{ id }</span> }
-    </div>
-  )
+    return (
+        <div
+            id={ id }
+            style={ circleButtonStyle }
+            className="circle"
+            onClick={ hancleClick }
+        >
+            { showId && <span style={ showIdStyle }>{ id }</span> }
+        </div>
+    )
 }

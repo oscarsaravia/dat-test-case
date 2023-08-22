@@ -12,10 +12,9 @@ export const fetchData = async () => {
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-
         return await response.json();
     } catch (error) {
-        throw new Error("Error fetching data");
+        console.error("Error fetching data: ", error);
     }  
 }
 
@@ -37,7 +36,7 @@ export const postData = async (data: string[]) => {
 
         return await response.json();
     } catch (error) {
-        console.error('There was a problem with the fetch operation:', error);
+        console.error('Error posting data: ', error);
         throw error;
     }
 }
