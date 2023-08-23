@@ -1,23 +1,35 @@
-import React from 'react'
+// import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { App } from './App.tsx'
 
-if (import.meta.env.MODE === 'development') {
-  const renderElement = document.getElementById('root')
-  ReactDOM.createRoot(renderElement!).render(
-    <App />
-  )
-} else {
-  window.DatPlugin = {
-    selector: '#root',
+(window as any).PLUGIN = {
+  init: (config: {
+    selector: string;
     options: {
-      initializedOptions: []
+      initializedOptions: string[];
+      onPositionChange: (positions: string[]) => void;
+      onComplete: (positions: string[]) => void;
+      onInit: () => void;
+    }
+  }) => {
+    const element = document.querySelector(config.selector)
+    if (element) {
+      ReactDOM.createRoot(document.getElementById('root')!).render(
+        <App { ...config.options }/>,
+      )
     }
   }
 }
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-)
+// Uncomment for development
+
+// ReactDOM.createRoot(document.getElementById('root')!).render(
+//   <React.StrictMode>
+//     <App
+//       initializedOptions={ []}
+//       onPositionChange={ (positions: string[]) => { console.log(positions) }}
+//       onComplete={ (positions: string[]) => { console.log(positions) }}
+//       onInit={() => console.log('init')}
+//     />
+//   </React.StrictMode>,
+// )

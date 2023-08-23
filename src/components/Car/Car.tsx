@@ -2,7 +2,7 @@ import { useStore } from 'effector-react'
 import { $carDamage, addCarDamage } from "../../store"
 import { CircleButton } from "../CircleButton/CircleButton"
 
-export const Car = () => {
+export const Car = ({ onPositionChange }: CarProps) => {
 
   // Config Variables
   const showId = false
@@ -15,7 +15,8 @@ export const Car = () => {
   const store = useStore($carDamage)      // List of damaged parts
 
   const handleClick = (row: {idPrefix: string, left: number, positions: number[]}, index: number) => {
-    addCarDamage(`${row.idPrefix}${index + 1}`)
+    addCarDamage(`${row.idPrefix}${index + 1}`) // Trigger add car damage event from effector
+    onPositionChange(store)
   }
 
   return (
