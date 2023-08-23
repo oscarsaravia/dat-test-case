@@ -1,6 +1,10 @@
+interface PluginOptions {
+  initializedOptions: string[];
+}
+
 interface DatPluginType {
-  mount: (elementId: string) => void;
-  unmount: (elementId: string) => void;
+  selector: string;
+  options: PluginOptions;
 }
 
 interface Window {
