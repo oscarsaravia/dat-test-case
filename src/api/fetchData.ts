@@ -1,8 +1,8 @@
-const url = 'https://myfailemtions.npkn.net/b944ff/'; // OBTENER DESDE EL ENV
+const { VITE_DAT_TEST_CASE_URL } = import.meta.env
 
 export const fetchData = async () => {
     try {
-        const response = await fetch(url, {
+        const response = await fetch(VITE_DAT_TEST_CASE_URL, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -19,9 +19,8 @@ export const fetchData = async () => {
 }
 
 export const postData = async (data: string[]) => {
-    console.log('POST: ', data);
     try {
-        const response = await fetch(url, {
+        const response = await fetch(VITE_DAT_TEST_CASE_URL, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
