@@ -20,7 +20,7 @@ export const Car = () => {
 
   return (
     <div className="image-container">
-        <img className='car' src="public/car.svg" alt="Car Top View" />
+        <img className='car' src="car.svg" alt="Car Top View" />
         {buttonDisplayConfig.map(row => 
         row.positions.map((top, index) => (
           <CircleButton
