@@ -1,4 +1,4 @@
-const url = 'https://myfailemtions.npkn.net/b944ff/';
+const url = 'https://myfailemtions.npkn.net/b944ff/'; // OBTENER DESDE EL ENV
 
 export const fetchData = async () => {
     try {
